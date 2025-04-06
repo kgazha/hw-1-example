@@ -1,6 +1,7 @@
 using System.Reflection;
 using HomeWorkExample.Interfaces;
 using HomeWorkExample.Repositories;
+using HomeWorkExample.Services;
 
 namespace HomeWorkExample;
 
@@ -11,6 +12,8 @@ public static class DependencyInjection
         services.AddRepositories();
 
         services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
+
+        services.AddScoped<ICalculator, Calculator>();
         
         return services;
     }

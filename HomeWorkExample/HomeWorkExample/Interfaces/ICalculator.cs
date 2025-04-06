@@ -2,8 +2,10 @@ namespace HomeWorkExample.Interfaces;
 
 public interface ICalculator
 {
-    public int Add(int a, int b);
-    public int Subtract(int a, int b);
-    public int Multiply(int a, int b);
-    public int Divide(int a, int b);
+    public decimal Add(decimal a, decimal b);
+    public decimal Subtract(decimal a, decimal b);
+    public decimal Multiply(decimal a, decimal b);
+    public decimal Multiply(decimal a, double b);
+    public double Multiply(double a, double b);
+    public decimal Divide(decimal a, decimal b);
 }

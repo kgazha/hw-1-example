@@ -5,22 +5,32 @@ namespace HomeWorkExample.Services;
 
 public class Calculator : ICalculator
 {
-    public int Add(int a, int b)
+    public decimal Add(decimal a, decimal b)
     {
         return a + b;
     }
 
-    public int Subtract(int a, int b)
+    public decimal Subtract(decimal a, decimal b)
     {
         return a - b;
     }
 
-    public int Multiply(int a, int b)
+    public decimal Multiply(decimal a, decimal b)
+    {
+        return a * b;
+    }
+    
+    public decimal Multiply(decimal a, double b)
+    {
+        return a * (decimal)b;
+    }
+
+    public double Multiply(double a, double b)
     {
         return a * b;
     }
 
-    public int Divide(int a, int b)
+    public decimal Divide(decimal a, decimal b)
     {
         if (b == 0)
         {

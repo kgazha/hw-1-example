@@ -1,4 +1,4 @@
-using HomeWorkExample.Application.CustomerSalaries.Commands.UpdateSalaryCommand;
+using HomeWorkExample.Application.CustomerSalaries.Commands.UpdateBaseSalaryCommand;
 using HomeWorkExample.Application.CustomerSalaries.Queries.GetCurrentSalaryQuery;
 using Microsoft.AspNetCore.Mvc;
 
@@ -13,6 +13,6 @@ public class CustomerSalaryController : ApiController
 
     [HttpPost]
     public async Task UpdateSalary(
-        [FromBody] UpdateSalaryCommandRequest request)
+        [FromBody] UpdateBaseSalaryCommandRequest request)
         => await Mediator!.Send(request);
 }

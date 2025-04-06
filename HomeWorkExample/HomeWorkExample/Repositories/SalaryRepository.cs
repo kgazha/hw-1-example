@@ -12,29 +12,32 @@ public class SalaryRepository : ISalaryRepository
             1, new CustomerSalary
             {
                 Id = 345,
-                Salary = 100000,
-                CustomerId = 1
+                BasicSalary = 26700,
+                CustomerId = 1,
+                Rate = 2.3
             }
         },
         {
             2, new CustomerSalary
             {
                 Id = 346,
-                Salary = 300000,
-                CustomerId = 2
+                BasicSalary = 26700,
+                CustomerId = 2,
+                Rate = 3
             }
         },
         {
             3, new CustomerSalary
             {
                 Id = 347,
-                Salary = 5000000,
-                CustomerId = 3
+                BasicSalary = 30156.32m,
+                CustomerId = 3,
+                Rate = 7
             }
         }
     };
 
-    public async Task<CustomerSalary?> GetCustomerSalary(long customerId)
+    public async Task<CustomerSalary?> GetCustomerSalary(long customerId, CancellationToken cancellationToken)
     {
         _salaries.TryGetValue(customerId, out var customerSalary);
 
@@ -43,9 +46,9 @@ public class SalaryRepository : ISalaryRepository
         return customerSalary;
     }
 
-    public async Task AddCustomerSalary(CustomerSalary salary)
+    public async Task AddCustomerSalary(CustomerSalary salary, CancellationToken cancellationToken)
     {
-        await Task.Delay(15);
+        await Task.Delay(15, cancellationToken);
 
         if (_salaries.ContainsKey(salary.CustomerId))
         {
@@ -55,7 +58,7 @@ public class SalaryRepository : ISalaryRepository
         _salaries.Add(salary.Id, salary);
     }
 
-    public Task UpdateCustomerSalary(CustomerSalary salary)
+    public Task UpdateCustomerBaseSalary(CustomerSalary salary, CancellationToken cancellationToken)
     {
         if (!_salaries.ContainsKey(salary.CustomerId))
         {
