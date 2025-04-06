@@ -50,12 +50,10 @@ public class SalaryRepository : ISalaryRepository
     {
         await Task.Delay(15, cancellationToken);
 
-        if (_salaries.ContainsKey(salary.CustomerId))
+        if (!_salaries.TryAdd(salary.CustomerId, salary))
         {
             throw new SqlException($"Пользователь {salary.CustomerId} уже существует в базе данных!");
         }
-
-        _salaries.Add(salary.Id, salary);
     }
 
     public Task UpdateCustomerBaseSalary(CustomerSalary salary, CancellationToken cancellationToken)
